@@ -10,6 +10,7 @@ export default function Diary() {
     const handleAdd = () => {
         if (inputTitles.trim() === "" || inputContents.trim() === "") return;
         const newDiary = {
+            id: Date.now(),
             title: inputTitles,
             content: inputContents,
         };
@@ -40,8 +41,8 @@ export default function Diary() {
 
             <ul>
                 {diaries.map((diary) => (
-                    <li key={diary.title}>
-                        <Link to={`/diary/${diary.title}`}>{diary.title}</Link>
+                    <li key={diary.id}>
+                        <Link to={`/diary/${diary.id}`}>{diary.title}</Link>
                     </li>
                 ))}
             </ul>

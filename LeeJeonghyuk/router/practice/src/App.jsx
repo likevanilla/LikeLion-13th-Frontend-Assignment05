@@ -14,7 +14,7 @@ export default function App() {
         <Route path="/todo/:id" element={<TodoDetail />} />
         <Route path="/timer" element={<TimerPage />} />
         <Route path="/diary" element={<Diary />} />
-        <Route path="/diary/:title" element={<DiaryDetail />} />
+        <Route path="/diary/:id" element={<DiaryDetail />} />
       </Routes>
     </Router>
   );
