@@ -20,6 +20,7 @@ export default function Diary() {
         // 제출 후 input, textarea 비우기
         inputTitle.reset();
         inputContent.reset();
+        alert("오늘도 일기를 적은 나, 대단해~")
     };
 
     return (
