@@ -1,22 +1,25 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
+import useInput from "../hooks/useInput";
 
 export default function Diary() {
     const [diaries, setDiaries] = useLocalStorage("diaries", []);
-    const [inputTitles, setInputTitle] = useState("");
-    const [inputContents, setInputContents] = useState("");
+    const inputTitle = useInput("");
+    const inputContent = useInput("");
 
     const handleAdd = () => {
-        if (inputTitles.trim() === "" || inputContents.trim() === "") return;
+        if (inputTitle.value.trim() === "" || inputContent.value.trim() === "") return;
+        
         const newDiary = {
             id: Date.now(),
-            title: inputTitles,
-            content: inputContents,
+            title: inputTitle.value,
+            content: inputContent.value,
         };
         setDiaries([...diaries, newDiary]);
-        setInputTitle("");
-        setInputContents("");
+        // 제출 후 input, textarea 비우기
+        inputTitle.reset();
+        inputContent.reset();
     };
 
     return (
@@ -25,16 +28,15 @@ export default function Diary() {
             <input 
                 type="text"
                 placeholder="제목을 입력하세요."
-                value={inputTitles}
-                onChange={(e) => setInputTitle(e.target.value)}
+                autoFocus
+                {...inputTitle} // value, onChange 한 번에 전달
             />
 
             <textarea
                 placeholder="일기를 작성하세요."
-                value={inputContents}
                 cols="30"
                 rows="5"
-                onChange={(e) => setInputContents(e.target.value)}
+                {...inputContent} // value, onChange 한 번에 전달
             >
             </textarea>
 
