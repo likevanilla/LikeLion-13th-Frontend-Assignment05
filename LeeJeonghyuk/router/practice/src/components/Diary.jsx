@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useInput from "../hooks/useInput";
 
@@ -7,6 +7,7 @@ export default function Diary() {
     const [diaries, setDiaries] = useLocalStorage("diaries", []);
     const inputTitle = useInput("");
     const inputContent = useInput("");
+    const navigate = useNavigate();
 
     const handleAdd = () => {
         if (inputTitle.value.trim() === "" || inputContent.value.trim() === "") return;
@@ -42,6 +43,7 @@ export default function Diary() {
             </textarea>
 
             <button type="submit" onClick={handleAdd}>제출</button>
+            <button onClick={() => navigate(-1)}>TodoList로 돌아가기</button> 
 
             <ul>
                 {diaries.map((diary) => (
