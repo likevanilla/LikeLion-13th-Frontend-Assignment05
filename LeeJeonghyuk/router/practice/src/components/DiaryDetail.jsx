@@ -1,16 +1,15 @@
+import { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 
-export default function TodoDetail() {
-    const { id } = useParams();
+export default function DiaryDetail() {
+    const { title } = useParams();
     const navigate = useNavigate();
 
     return (
         <div>
-            <h2>Todo 상세 페이지</h2>
-            <p>
-                Todo ID: <strong>{id}</strong>
-            </p>
+            <h1> {title} </h1>
+            
             <button onClick={() => navigate(-1)}>목록으로 돌아가기</button> 
         </div>
     );

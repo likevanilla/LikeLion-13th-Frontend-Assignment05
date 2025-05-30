@@ -9,7 +9,7 @@ export default function TodoList() {
     const handleAdd = () => {
         if (input.trim() === "") return;
         const newTodo = {
-            id: Date.now(),
+            id: new Date(),
             title: input,
         };
         setTodos([...todos, newTodo]);
