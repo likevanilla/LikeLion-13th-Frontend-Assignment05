@@ -14,6 +14,8 @@ export default function DiaryDetail() {
         setDiary(found);
     }, [id, diaries]); 
 
+    if (!diary) return <div>일기를 가져오는 중입니다!</div>;
+
     return (
         <div>
             <h1> {diary.title} </h1>

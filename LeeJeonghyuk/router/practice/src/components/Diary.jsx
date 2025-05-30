@@ -21,6 +21,7 @@ export default function Diary() {
 
     return (
         <div>
+            <h1>Diary</h1>
             <input 
                 type="text"
                 placeholder="제목을 입력하세요."

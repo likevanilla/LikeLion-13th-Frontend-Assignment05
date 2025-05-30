@@ -8,7 +8,6 @@ import DiaryDetail from "./components/DiaryDetail";
 export default function App() {
   return (
     <Router>
-      <h1>Todo List</h1>
       <Routes>
         <Route path="/" element={<TodoList />} />
         <Route path="/todo/:id" element={<TodoDetail />} />

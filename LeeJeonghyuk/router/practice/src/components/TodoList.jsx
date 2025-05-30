@@ -18,6 +18,7 @@ export default function TodoList() {
 
     return (
         <div>
+            <h1>Todo List</h1>
             <input
                 type="text"
                 placeholder="할 일을 입력하세요"

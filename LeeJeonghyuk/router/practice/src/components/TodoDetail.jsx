@@ -1,5 +1,4 @@
 import { useParams, useNavigate } from "react-router-dom";
-import useLocalStorage from "../hooks/useLocalStorage";
 
 export default function TodoDetail() {
     const { id } = useParams();
