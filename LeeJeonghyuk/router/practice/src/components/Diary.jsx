@@ -1,7 +1,7 @@
-import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
 import useInput from "../hooks/useInput";
+import * as S from "./Style";
 
 export default function Diary() {
     const [diaries, setDiaries] = useLocalStorage("diaries", []);
@@ -25,33 +25,33 @@ export default function Diary() {
     };
 
     return (
-        <div>
-            <h1>Diary</h1>
-            <input 
+        <S.Box>
+            <S.Title>Diary</S.Title>
+            <S.Input
                 type="text"
                 placeholder="제목을 입력하세요."
                 autoFocus
                 {...inputTitle} // value, onChange 한 번에 전달
             />
 
-            <textarea
+            <S.TextArea
                 placeholder="일기를 작성하세요."
                 cols="30"
                 rows="5"
                 {...inputContent} // value, onChange 한 번에 전달
             >
-            </textarea>
+            </S.TextArea>
 
-            <button type="submit" onClick={handleAdd}>제출</button>
-            <button onClick={() => navigate(-1)}>TodoList로 돌아가기</button> 
+            <S.Button type="submit" onClick={handleAdd}>제출</S.Button>
+            <S.Button onClick={() => navigate(-1)}>TodoList로 돌아가기</S.Button> 
 
-            <ul>
+            <S.Ol>
                 {diaries.map((diary) => (
                     <li key={diary.id}>
                         <Link to={`/diary/${diary.id}`}>{diary.title}</Link>
                     </li>
                 ))}
-            </ul>
-        </div>
+            </S.Ol>
+        </S.Box>
     );
 }

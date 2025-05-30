@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import useLocalStorage from "../hooks/useLocalStorage";
+import * as S from "./Style";
 
 export default function DiaryDetail() {
     const { id } = useParams();
@@ -18,9 +19,14 @@ export default function DiaryDetail() {
 
     return (
         <div>
-            <h1> {diary.title} </h1>
-            <p>{diary.content}</p>
-            <button onClick={() => navigate(-1)}>목록으로 돌아가기</button> 
+            <S.Title> {diary.title} </S.Title>
+            <S.Hr />
+            <br />
+            <S.Pre>{diary.content}</S.Pre>
+            <br />
+            <S.Hr />
+            <S.Button onClick={() => navigate(-1)}>목록으로 돌아가기</S.Button> 
+            
         </div>
     );
 }
